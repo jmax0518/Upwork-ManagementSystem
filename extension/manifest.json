@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "Upwork Job Summarizer",
+  "version": "1.0.9",
+  "description": "Summarize Upwork jobs and send structured job data to your management dashboard server.",
+  "permissions": ["storage", "activeTab"],
+  "optional_host_permissions": ["http://*/*", "https://*/*"],
+  "host_permissions": [
+    "https://www.upwork.com/*",
+    "http://localhost/*",
+    "http://127.0.0.1/*",
+    "http://localhost:3847/*",
+    "http://127.0.0.1:3847/*",
+    "https://*.ngrok-free.dev/*",
+    "https://*.ngrok-free.app/*",
+    "https://*.ngrok.app/*",
+    "https://yanking-bullish-negligent.ngrok-free.dev/*"
+  ],
+  "background": {
+    "service_worker": "src/background/service-worker.js",
+    "type": "module"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Upwork Job Summarizer"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.upwork.com/*"],
+      "js": ["dist/content.js"],
+      "css": ["src/content/content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}

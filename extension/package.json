@@ -1,0 +1,12 @@
+{
+  "name": "upwork-job-summarizer-extension",
+  "private": true,
+  "version": "1.0.2",
+  "scripts": {
+    "build": "esbuild src/content/main.js --bundle --outfile=dist/content.js --format=iife --target=chrome109",
+    "build:watch": "npm run build -- --watch"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}

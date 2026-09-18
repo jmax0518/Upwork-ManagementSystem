@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Upwork Job Summarizer</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <h1>Upwork Job Summarizer</h1>
+      <p class="lead">
+        Configure where structured job data is sent. On Upwork, open a job and click
+        <strong>Summary</strong>.
+      </p>
+
+      <label for="apiBaseUrl">Server base URL</label>
+      <input
+        id="apiBaseUrl"
+        type="url"
+        placeholder="http://127.0.0.1:3847"
+        autocomplete="off"
+      />
+      <p class="field-hint">
+        <strong>Chrome on the same PC:</strong> use <code>http://127.0.0.1:3847</code>.
+        <strong>ixBrowser / remote profile:</strong> use the URL that reaches your dev machine
+        (LAN IP from Next.js, e.g. <code>http://192.168.x.x:3847</code>, or your public URL).
+        After changing this, click <strong>Save settings</strong> and choose <strong>Allow</strong>.
+      </p>
+
+      <label for="apiPath">API path</label>
+      <input id="apiPath" type="text" placeholder="/api/jobs" autocomplete="off" />
+
+      <label for="apiKey">API key (optional)</label>
+      <input
+        id="apiKey"
+        type="password"
+        placeholder="Bearer token if your server requires auth"
+        autocomplete="off"
+      />
+
+      <div class="btn-row">
+        <button id="saveBtn" type="button">Save settings</button>
+        <button id="testBtn" type="button" class="secondary">Test connection</button>
+      </div>
+      <p id="status" class="status" role="status"></p>
+
+      <section class="hint">
+        <h2>Dashboard pipeline</h2>
+        <p>
+          Jobs are posted as JSON with <code>pipelineStatus: "new"</code>. Your dashboard can
+          track bidding, interviews, and outcomes by updating status on the same
+          <code>upworkJobId</code>.
+        </p>
+      </section>
+    </main>
+    <script src="popup.js" type="module"></script>
+  </body>
+</html>
